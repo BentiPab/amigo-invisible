@@ -46,7 +46,7 @@ export const assignFriend = (
   friends: { [key: string]: string }
 ) => {
   const possibleFriends = Object.keys(friends).filter((k) => {
-    return k !== value && !friends[k];
+    return k !== value && !Object.values(friends).includes(k);
   });
   const randomFriend =
     possibleFriends[Math.floor(Math.random() * possibleFriends.length)];

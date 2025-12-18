@@ -7,7 +7,6 @@ const opciones = ref([])
 const friendsData = ref({})
 onMounted(async () => {
   const friends = await getFriends()
-  console.log(friends)
   friendsData.value = friends
   opciones.value = Object.keys(friends)
 })
@@ -71,7 +70,7 @@ const closeModal = () => {
     </p>
     <button :disabled="!selectedValue || !friendsData" class="btn-enviar" @click="abrirModal()">Revelar Amigo</button>
     <Teleport to="body">
-      <div v-if="mostrarModal" class="modal-overlay" @click.self="mostrarModal = false">
+      <div v-if="mostrarModal" class="modal-overlay" >
         <div class="modal-content">
           <h3 class="nombre-revelado">🎁 ¡Tu Amigo Invisible es!</h3>
           <p class="nombre-revelado">{{ amigoRevelado }}</p>
