@@ -7,6 +7,7 @@ const opciones = ref([])
 const friendsData = ref({})
 onMounted(async () => {
   const friends = await getFriends()
+  console.log(friends)
   friendsData.value = friends
   opciones.value = Object.keys(friends)
 })
@@ -38,9 +39,10 @@ const abrirModal = async () => {
  
   amigoRevelado.value = assignedFriend.toUpperCase()
   mostrarModal.value = true
-  
+
   await saveFriends(name, assignedFriend)
-  friendsData.value = {...friendsData, [name]: assignedFriend}
+  friendsData.value = {...friendsData.value, [name]: assignedFriend}
+
   disableCloseModal.value = false
 }
 
